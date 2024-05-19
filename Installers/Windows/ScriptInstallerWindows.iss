@@ -1,13 +1,13 @@
 // sinT Windows installer script for Windows (InnoSetup) -> GitHub - AlbertoNR98
 
 #define AppName "sinT"
-#define AppVersion "1.0.0"
+#define AppVersion "1.1.1"
 #define AppPublisher "AlbertoNR98"
 #define AppURL "https://www.github.com/AlbertoNR98/sinT"
 #define AppExeName "sinT.exe"
 #define ExecutableDir "" ; Path where the .exe is located before creating the installer -> e.g. "C:\Users\Alberto\Desktop\sinT\Builds\VisualStudio2022\x64\Release\Standalone Plugin\sinT.exe"
 #define KioskDir "" ; Path where the .exe is located before creating the installerr -> e.g. "C:\Users\Alberto\Desktop\sinT\Builds\VisualStudio2022\x64\Release_Kiosk\Standalone Plugin\sinT.exe"
-#define VST3PluginDir "" ; Path where the VST plugin is located before creating the installer  -> e.g. "C:\Users\Alberto\Desktop\sinT\Builds\VisualStudio2022\x64\Release\VST3\sinT.vst3"
+#define VST3PluginDir "" ; Path where the VST plugin is located before creating the installer  -> e.g. "C:\Users\Alberto\Desktop\sinT\Builds\VisualStudio2022\x64\Release\VST3\sinT.vst3\*"
 #define PresetsDir "" ; Factory presets path -> e.g. "C:\Users\Alberto\Desktop\sinT\Presets\*"
 
 [Setup]
@@ -49,7 +49,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "{#ExecutableDir}"; DestDir: "{code:GetDir|0}"; Flags: ignoreversion; Components: standalonecomp
 Source: "{#KioskDir}"; DestDir: "{code:GetDir|0}"; Flags: ignoreversion; Components: kioskcomp
-Source: "{#VST3PluginDir}"; DestDir: "{code:GetDir|1}"; Flags: ignoreversion; Components: vst3comp
+Source: "{#VST3PluginDir}"; DestDir: "{code:GetDir|1}\sinT.vst3"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: vst3comp
 Source: "{#PresetsDir}"; DestDir: "{%HOMEPATH}\sinT\Presets"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
